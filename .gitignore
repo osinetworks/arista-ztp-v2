@@ -1,0 +1,3 @@
+venv/, .venv/, .env,
+secrets.yaml
+.pyc, __pycache__/
