@@ -1,0 +1,10 @@
+bind-dynamic
+except-interface=lo
+
+dhcp-range=${DHCP_RANGE_START},${DHCP_RANGE_END},${DHCP_SUBNET},${DHCP_LEASE}
+dhcp-option=3,${SERVER_IP}
+dhcp-option=6,${DNS_SERVER_IP}
+dhcp-option=67,http://${SERVER_IP}:${HTTP_PORT}/bootstrap
+
+log-dhcp
+log-queries

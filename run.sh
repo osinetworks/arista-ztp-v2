@@ -1,1 +1,1 @@
-clab dep -t ztp-ceos.yaml
+clab dep -t arista-ztp-v2.yaml

@@ -19,8 +19,8 @@ def get_serial():
     return None
 
 serial = get_serial()
-server_ip = "192.168.100.1:8080"
-config_file = "generic.cfg"
+server_ip = "${SERVER_IP}:${HTTP_PORT}"
+config_file = "${DEFAULT_CONFIG_FILE}"
 
 if not serial:
     print(f"Serial number not found. Falling back to {config_file}")

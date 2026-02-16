@@ -1,0 +1,29 @@
+name: ztp-ceos
+prefix: ""
+topology:
+  kinds:
+    ceos:
+      image: ceos:4.32.9M
+  nodes:
+    sw1:
+      kind: ceos
+      suppress-startup-config: true
+    sw2:
+      kind: ceos
+      suppress-startup-config: true
+    mgmt-sw:
+      kind: ceos
+      startup-config: ./ztp-data/configs/mgmt-sw.cfg
+    ztp-server:
+      kind: linux
+      image: ztp-server:1.1
+      binds:
+        - ./ztp-data:/var/www/ztp:rw
+      exec:
+        - ip addr add ${SERVER_IP}/24 dev eth1
+        - ip link set eth1 up
+  links:
+    - endpoints: ["sw1:eth1", "sw2:eth1"]
+    - endpoints: ["sw1:eth3", "mgmt-sw:eth1"]
+    - endpoints: ["sw2:eth3", "mgmt-sw:eth2"]
+    - endpoints: ["ztp-server:eth1", "mgmt-sw:eth3"]
