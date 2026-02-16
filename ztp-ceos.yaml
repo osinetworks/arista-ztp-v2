@@ -20,7 +20,7 @@ topology:
       binds:
         - ./ztp-data:/var/www/ztp:rw
       exec:
-        - ip addr add 192.168.100.1/24 dev eth1
+        - ip addr add ${SERVER_IP}/24 dev eth1
         - ip link set eth1 up
   links:
     - endpoints: ["sw1:eth1", "sw2:eth1"]

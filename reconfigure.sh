@@ -1,1 +1,1 @@
-clab dep -t arista-ztp-v2.yaml --reconfigure
+clab dep -t ztp-ceos.yaml --reconfigure
